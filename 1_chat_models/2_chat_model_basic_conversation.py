@@ -1,12 +1,12 @@
 from dotenv import load_dotenv
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 # Load environment variables from .env
 load_dotenv()
 
 # Create a ChatOpenAI model
-model = ChatOpenAI(model="gpt-4o")
+model = ChatGoogleGenerativeAI(model="gemini-2.0-flash-001")
 
 # SystemMessage:
 #   Message for priming AI behavior, usually passed in as the first of a sequenc of input messages.
@@ -19,11 +19,11 @@ messages = [
 
 # Invoke the model with messages
 result = model.invoke(messages)
-print(f"Answer from AI: {result.content}")
+# print(f"Answer from AI: {result.content}")
 
 
 # AIMessage:
-#   Message from an AI.
+#  Message from an AI.
 messages = [
     SystemMessage(content="Solve the following math problems"),
     HumanMessage(content="What is 81 divided by 9?"),
