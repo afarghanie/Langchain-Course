@@ -12,7 +12,7 @@ model = ChatGoogleGenerativeAI(model="gemini-2.0-flash-001")
 chat_history = []  # Use a list to store messages
 
 # Set an initial system message (optional)
-system_message = SystemMessage(content="You are a helpful AI assistant.")
+system_message = SystemMessage(content="You are a helpful AI assistant. Rule : For Every Response I want you to avoid using Bold TEXT therefore in the output doesn't have this annoying symbol **")
 chat_history.append(system_message)  # Add system message to chat history
 
 # Chat loop
