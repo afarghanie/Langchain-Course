@@ -30,33 +30,34 @@ model = ChatGoogleGenerativeAI(model="gemini-2.0-flash-001")
 # print(result.content)
 
 # PART 3: Prompt with System and Human Messages (Using Tuples)
-# print("\n----- Prompt with System and Human Messages (Tuple) -----\n")
-# messages = [
-#     ("system", "You are a comedian who tells jokes about {topic}."),
-#     ("human", "Tell me {joke_count} jokes."),
-# ]
-# prompt_template = ChatPromptTemplate.from_messages(messages)
-# prompt = prompt_template.invoke({"topic": "lawyers", "joke_count": 3})
-# result = model.invoke(prompt)
-# print(result.content)
+print("\n----- Prompt with System and Human Messages (Tuple) -----\n")
+template = [
+    ("system", "You are a comedian who tells jokes about {topic}."),
+    ("human", "Tell me {joke_count} jokes."),
+]
+prompt_template = ChatPromptTemplate.from_messages(template)
+prompt = prompt_template.invoke({"topic": "lawyers", "joke_count": 3})
+result = model.invoke(prompt)
+print(result.content)
 
 # Part 4 Trying Myself "String Prompt Templates"
 # print("--String Prompt Templates")
-# prompt_template = PromptTemplate.from_template("Tell me a joke about {topic}")
+# template = "Tell me a joke about {topic}"
+# prompt_template = PromptTemplate.from_template(template)
 
-# prompt = prompt_template.invoke({"topic": "cats"})
+# prompt = prompt_template.invoke({"topic": "zebra"})
 # result = model.invoke(prompt)
 # response = result.content
 
 # print(f"AI Response : {response}")
 
 # Part 5 Trying Myself using #Chat Prompt Templates
-print("--Chat Prompt Template--")
+# print("--Chat Prompt Template--")
+# template = [("system","You are helpful AI asistant"),("user", "Tell me a joke about {Topic}")]
+# prompt_template = ChatPromptTemplate(template)
+# prompt = prompt_template.invoke({"Topic" : " Crocodile"})
+# result = model.invoke(prompt)
+# response = result.content
 
-prompt_template = ChatPromptTemplate([("system","You are helpful AI asistant"),("user", "Tell me a joke about {Topic}")])
-prompt = prompt_template.invoke({"Topic" : " Crocodile"})
-result = model.invoke(prompt)
-response = result.content
-
-print(f"AI : {response}")
+# print(f"AI : {response}")
 

@@ -2,18 +2,17 @@ from dotenv import load_dotenv
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema.output_parser import StrOutputParser
 from langchain.schema.runnable import RunnableParallel, RunnableLambda
-from langchain_openai import ChatOpenAI
-
+from langchain_google_genai import ChatGoogleGenerativeAI
 # Load environment variables from .env
 load_dotenv()
 
 # Create a ChatOpenAI model
-model = ChatOpenAI(model="gpt-4o")
+model = ChatGoogleGenerativeAI(model="gemini-2.0-flash-001")
 
 # Define prompt template
 prompt_template = ChatPromptTemplate.from_messages(
     [
-        ("system", "You are an expert product reviewer."),
+        ("system", "You are an expert product reviewer.Rules : For Output avoid using bold character using this symbol ** so the text would be easier to read"),
         ("human", "List the main features of the product {product_name}."),
     ]
 )
